@@ -1,2 +1,2 @@
-
-.stopwatch button { margin: .33em }
+.stopwatch button { margin: .33em; width: 5em }
+.stopwatch .duration-display { font: 33px "Arial Black", Arial, sans-serif }

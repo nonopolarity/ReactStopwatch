@@ -10,11 +10,8 @@ import "./Stopwatch.css";
 let startTime = null;
 
 export default function Stopwatch() {
-    // console.log("HERE", fooBar);
     const [isStopwatchRunning, setIsStopWatchRunning] = useState(false);
-    // const [isStopwatchAtReset, setIsStopwatchAtReset] = useState(true);
     const [cumulativeDuration, setCumulativeDuration] = useState(0);
-
     const [currentTime, setCurrentTime] = useState(0);
 
     useEffect(() => {
@@ -46,7 +43,7 @@ export default function Stopwatch() {
     }
 
     let displayedDuration;
-  if (!isStopwatchRunning) {
+    if (!isStopwatchRunning) {
         displayedDuration = cumulativeDuration;
     } else {
         displayedDuration = cumulativeDuration + Date.now() - startTime;
@@ -54,7 +51,7 @@ export default function Stopwatch() {
 
     return (
         <div className="stopwatch">
-            <div className="duration-display">{ (displayedDuration / 1000).toFixed(2)}</div>
+            <div className="duration-display">{(displayedDuration / 1000).toFixed(2)}</div>
             <button onClick={handleStart}>{isStopwatchRunning ? "Pause" : "Start"}</button>
             <button onClick={handleReset}>Reset</button>
         </div>
