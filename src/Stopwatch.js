@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
+import "./Stopwatch.css";
 
 // Design goal: so that the displayed duration is not
-// affected by the asychronous update (render) behavior
+// affected by the asychronous update (render) behavior and setData()
 // of ReactJS, but can reflect the most accurate time
 // between the time that the user presses Start and Pause
 // (and repeatedly doing so).
@@ -19,7 +20,7 @@ export default function Stopwatch() {
     useEffect(() => {
         if (isStopwatchRunning) {
             const timerID = setInterval(() => {
-                setCurrentTime(Date.now());
+                setCurrentTime(Date.now());  // currentTime is not used for display, but just to trigger a re-render
             }, 10);
             return () => {
                 clearInterval(timerID);
@@ -54,11 +55,11 @@ export default function Stopwatch() {
     }
 
     return (
-        <>
+        <div className="stopwatch">
             <div className="duration-display">{ (displayedDuration / 1000).toFixed(2)}</div>
             <button onClick={handleStart}>{isStopwatchRunning ? "Pause" : "Start"}</button>
             <button onClick={handleReset}>Reset</button>
-        </>
+        </div>
     );
 
 }
