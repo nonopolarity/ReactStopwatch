@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import "./Stopwatch.css";
 
 // Design goal: the displayed duration is not
-// affected by the asychronous update (render) behavior and any setData()
+// affected by the asychronous update (render) and 
+// any asychronous setData() behavior
 // of ReactJS, but can reflect the most accurate time
 // between the time that the user presses Start and Pause
 // (and user repeatedly doing so).
@@ -49,8 +50,9 @@ export default function Stopwatch() {
     function pad(n) {
         return (n >= 10) ? `${n}` : `0${n}`;
     }
+
     const nDays = Math.floor(duration / 24 / 60 / 60 / 1000),
-        days = (nDays === 0) ? "" : `${nDays} days`,
+        days = (nDays === 0) ? "" : `${nDays} days `,
         hours = pad(Math.floor(duration / 60 / 60 / 1000) % 24),
         minutes = pad(Math.floor(duration / 60 / 1000) % 60),
         seconds = pad(Math.floor(duration / 1000) % 60),
@@ -58,8 +60,7 @@ export default function Stopwatch() {
 
     return (
         <div className="stopwatch">
-            <div className="duration-display">{`${days} ${hours}:${minutes}:${seconds}`}<div>{hundredth} / 100</div></div>
-            {/* <div className="duration-display">{(duration / 1000).toFixed(2)}</div> */}
+            <div className="duration-display">{`${days}${hours}:${minutes}:${seconds}`}<div>{hundredth} / 100</div></div>
             <button onClick={handleStartAndPause}>{isStopwatchRunning ? "Pause" : "Start"}</button>
             <button onClick={handleReset}>Reset</button>
         </div>
