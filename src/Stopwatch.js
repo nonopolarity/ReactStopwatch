@@ -46,9 +46,7 @@ export default function Stopwatch() {
     }
 
     let displayedDuration;
-    if (startTime === null) {
-        displayedDuration = 0;
-    } else if (!isStopwatchRunning) {
+  if (!isStopwatchRunning) {
         displayedDuration = cumulativeDuration;
     } else {
         displayedDuration = cumulativeDuration + Date.now() - startTime;
