@@ -1,5 +1,11 @@
 import { useEffect, useState } from "react";
 
+// Design goal: so that the displayed duration is not
+// affected by the asychronous update (render) behavior
+// of ReactJS, but can reflect the most accurate time
+// between the time that the user presses Start and Pause
+// (and repeatedly doing so).
+
 let startTime = null;
 
 export default function Stopwatch() {
