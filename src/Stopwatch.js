@@ -54,7 +54,7 @@ export default function Stopwatch() {
 
     return (
         <>
-            <div>{ (displayedDuration / 1000).toFixed(2)}</div>
+            <div className="duration-display">{ (displayedDuration / 1000).toFixed(2)}</div>
             <button onClick={handleStart}>{isStopwatchRunning ? "Pause" : "Start"}</button>
             <button onClick={handleReset}>Reset</button>
         </>
