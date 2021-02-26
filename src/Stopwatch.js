@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 let startTime = null;
 
 export default function Stopwatch() {
+    // console.log("HERE", fooBar);
     const [isStopwatchRunning, setIsStopWatchRunning] = useState(false);
     // const [isStopwatchAtReset, setIsStopwatchAtReset] = useState(true);
     const [cumulativeDuration, setCumulativeDuration] = useState(0);
@@ -28,10 +29,10 @@ export default function Stopwatch() {
 
 
     function handleStart(ev) {
-        if (!isStopwatchRunning) {  // Starting
+        if (!isStopwatchRunning) {  // Starting it
             startTime = Date.now();
             // setIsStopwatchAtReset(false);
-        } else {    // Pausing
+        } else {    // Pausing it
             // setIsStopWatchRunning(false);
             setCumulativeDuration(cumulativeDuration + Date.now() - startTime);
         }
