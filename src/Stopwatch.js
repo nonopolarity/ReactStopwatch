@@ -15,12 +15,14 @@ export default function Stopwatch() {
     const [cumulativeDuration, setCumulativeDuration] = useState(0);
     const [currentTime, setCurrentTime] = useState(0);
 
-    useEffect(() => {
+    if (true) useEffect(() => {
         if (isStopwatchRunning) {
+            console.log("SETTING TIMER");
             const timerID = setInterval(() => {
                 setCurrentTime(Date.now());  // currentTime is not used for display, but just to trigger a re-render
             }, 10);
             return () => {
+                console.log("CLEARING TIMER", timerID);
                 clearInterval(timerID);
             }
         }
